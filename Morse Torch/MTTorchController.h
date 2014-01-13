@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol MTTorchDelegate <NSObject>
+
+-(void)displayNextLetter;
+
+@end
+
 @interface MTTorchController : NSObject
 
 + (MTTorchController *)sharedTorch;
 - (void)sendMorseArrayToTorch:(NSArray *)morseArray;
+
+@property (assign) id <MTTorchDelegate> delegate;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "MTTorchController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "NSString+MorseCode.h"
 
 @interface MTTorchController ()
 
@@ -34,6 +35,8 @@
 
 - (void)sendMorseArrayToTorch:(NSArray *)morseArray
 {
+    MTTorchController __weak *weakSelf = self;
+    
     // Loop through the codes in the message
     for (NSString *code in morseArray) {
         // Loop through the dis and dahs for each code
@@ -45,14 +48,19 @@
             [_morseCodeQueue addOperationWithBlock:^{
                 if ([currentSymbol isEqualToString:@"."]) {
                     // send a short (one-unit) flash for a 'dit'
-                    [self shortFlash];
+                    [weakSelf shortFlash];
                 } else if ([currentSymbol isEqualToString:@"-"]) {
                     // send a long (two-units) flash for a 'dot'
-                    [self longFlash];
+                    [weakSelf longFlash];
                 } else {
                     // send a medium gap (five-units) pause for the end of a word ' '
-                    [self pauseBetweenWords];
-                }                
+                    [weakSelf pauseBetweenWords];
+                }
+                
+                if (i == code.length - 1)
+                {
+                    [self.delegate performSelector:@selector(displayNextLetter)];
+                }
             }];
         }
     }

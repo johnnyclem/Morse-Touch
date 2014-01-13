@@ -8,13 +8,17 @@
 
 #import "MTViewController.h"
 #import "NSString+MorseCode.h"
-#import "MTTorchController.h"
 
 @interface MTViewController ()
 
 - (IBAction)sendMorseCodeMessage:(id)sender;
 
 @property (nonatomic, weak) IBOutlet UITextField *messageField;
+
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+
+@property NSInteger tempNumber;
+
 
 @end
 
@@ -23,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.messageField.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -34,16 +39,41 @@
 
 - (IBAction)sendMorseCodeMessage:(id)sender
 {
+    [self.messageField resignFirstResponder];
     NSString *messageString = _messageField.text;
+    
+    self.tempNumber = 0;
     NSLog(@"Converting Message To Morse Array: %@", messageString);
     NSArray *morseArray = [NSString morseArrayFromString:messageString];
     [self sendMessageToTorch:morseArray];
+    
+    NSString *tempString =  [self.messageField.text substringWithRange:NSMakeRange(self.tempNumber, 1)];
+    [self.textLabel performSelectorOnMainThread:@selector(setText:) withObject:tempString waitUntilDone:NO];
 }
 
 - (void)sendMessageToTorch:(NSArray *)messageArray
 {
     NSLog(@"Sending Morse Array To Torch: %@", messageArray);
-    [[MTTorchController sharedTorch] sendMorseArrayToTorch:messageArray];
+    MTTorchController *torch = [MTTorchController sharedTorch];
+    torch.delegate = self;
+    [torch sendMorseArrayToTorch:messageArray];
 }
 
+-(void)displayNextLetter
+{
+    self.tempNumber++;
+    if (self.tempNumber < self.messageField.text.length)
+    {
+        NSString *tempString =  [self.messageField.text substringWithRange:NSMakeRange(self.tempNumber, 1)];
+        [self.textLabel performSelectorOnMainThread:@selector(setText:) withObject:tempString waitUntilDone:NO];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
 @end

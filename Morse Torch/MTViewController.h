@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MTTorchController.h"
 
-@interface MTViewController : UIViewController
+@interface MTViewController : UIViewController <MTTorchDelegate, UITextFieldDelegate>
+
 
 @end
