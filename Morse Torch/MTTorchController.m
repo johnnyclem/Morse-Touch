@@ -7,6 +7,7 @@
 //
 
 #import "MTTorchController.h"
+#import "NSString+MorseCode.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface MTTorchController ()
@@ -36,11 +37,14 @@
 {
     // Loop through the codes in the message
     for (NSString *code in morseArray) {
+        // Inform the delegate that we are sending currentSymbol
+        [_morseCodeQueue addOperationWithBlock:^{
+            [_delegate sendingCharacter:[NSString characterForMorseCode:code]];
+        }];
         // Loop through the dis and dahs for each code
         for (int i=0; i < code.length; i++) {
             // get the current symbol within this code
             NSString *currentSymbol = [code substringWithRange:NSMakeRange(i, 1)];
-            NSLog(@"Sending %@ to torch", currentSymbol);
             // wrap the torch comman in a block for the single-lane morse code queue
             [_morseCodeQueue addOperationWithBlock:^{
                 if ([currentSymbol isEqualToString:@"."]) {
@@ -57,6 +61,18 @@
         }
     }
     
+    [_morseCodeQueue addOperationWithBlock:^{
+       [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+           [self.delegate didSendMessage:YES];
+       }];
+    }];
+}
+
+- (void)cancelMessage
+{
+    [_morseCodeQueue setSuspended:YES];
+    [_morseCodeQueue cancelAllOperations];
+    [self.delegate didSendMessage:YES];
 }
 
 - (void)shortFlash
@@ -100,7 +116,7 @@
     
     if ([device hasTorch] && [device hasFlash]){
         [device lockForConfiguration:nil];
-        usleep(self.unitDuration);
+        usleep(self.unitDuration * 2);
         [device unlockForConfiguration];
     }
 }
