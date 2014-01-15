@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MTTorchController.h"
 
-@interface MTViewController : UIViewController <MTTorchControllerDelegate>
+@interface MTSendViewController : UIViewController <MTTorchControllerDelegate>
 
 @end

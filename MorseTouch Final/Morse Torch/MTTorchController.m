@@ -13,7 +13,7 @@
 @interface MTTorchController ()
 
 @property (nonatomic, strong) NSOperationQueue *morseCodeQueue;
-@property NSInteger unitDuration;
+@property useconds_t unitDuration;
 
 @end
 

@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Code Fellows. All rights reserved.
 //
 
-#import "MTViewController.h"
+#import "MTSendViewController.h"
 #import "NSString+MorseCode.h"
 #import "MTTorchController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface MTViewController ()
+@interface MTSendViewController ()
 
 - (IBAction)sendMorseCodeMessage:(id)sender;
 
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation MTViewController
+@implementation MTSendViewController
 
 - (void)viewDidLoad
 {
