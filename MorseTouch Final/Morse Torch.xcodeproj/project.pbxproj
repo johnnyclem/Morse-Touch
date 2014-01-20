@@ -25,6 +25,7 @@
 		EF04D1F7187E0CCB000C1D68 /* NSString+MorseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = EF04D1F6187E0CCB000C1D68 /* NSString+MorseCode.m */; };
 		EF04D1FA187E172C000C1D68 /* MTTorchController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF04D1F9187E172C000C1D68 /* MTTorchController.m */; };
 		EF04D1FC187E1735000C1D68 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF04D1FB187E1735000C1D68 /* AVFoundation.framework */; };
+		EFE6723A188DC55C00ACB3E6 /* CFMagicEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE67239188DC55C00ACB3E6 /* CFMagicEvents.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EFEDB51918860A7F008D7CC7 /* MTReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEDB51818860A7F008D7CC7 /* MTReceiveViewController.m */; };
 		EFEDB51B18861CD4008D7CC7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFEDB51A18861CD4008D7CC7 /* ImageIO.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,8 @@
 		EF04D1F8187E172C000C1D68 /* MTTorchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTorchController.h; sourceTree = "<group>"; };
 		EF04D1F9187E172C000C1D68 /* MTTorchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTorchController.m; sourceTree = "<group>"; };
 		EF04D1FB187E1735000C1D68 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EFE67238188DC55C00ACB3E6 /* CFMagicEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFMagicEvents.h; sourceTree = "<group>"; };
+		EFE67239188DC55C00ACB3E6 /* CFMagicEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFMagicEvents.m; sourceTree = "<group>"; };
 		EFEDB51718860A7F008D7CC7 /* MTReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTReceiveViewController.h; sourceTree = "<group>"; };
 		EFEDB51818860A7F008D7CC7 /* MTReceiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTReceiveViewController.m; sourceTree = "<group>"; };
 		EFEDB51A18861CD4008D7CC7 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -135,6 +138,7 @@
 		EF04D1C6187E0B4C000C1D68 /* Morse Torch */ = {
 			isa = PBXGroup;
 			children = (
+				EFE67237188DC42A00ACB3E6 /* CFMagicEvents */,
 				EF04D1CF187E0B4C000C1D68 /* MTAppDelegate.h */,
 				EF04D1D0187E0B4C000C1D68 /* MTAppDelegate.m */,
 				EF04D1D2187E0B4C000C1D68 /* Main.storyboard */,
@@ -179,6 +183,15 @@
 				EF04D1E8187E0B4C000C1D68 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EFE67237188DC42A00ACB3E6 /* CFMagicEvents */ = {
+			isa = PBXGroup;
+			children = (
+				EFE67238188DC55C00ACB3E6 /* CFMagicEvents.h */,
+				EFE67239188DC55C00ACB3E6 /* CFMagicEvents.m */,
+			);
+			name = CFMagicEvents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +333,7 @@
 				EF04D1D1187E0B4C000C1D68 /* MTAppDelegate.m in Sources */,
 				EF04D1F7187E0CCB000C1D68 /* NSString+MorseCode.m in Sources */,
 				EFEDB51918860A7F008D7CC7 /* MTReceiveViewController.m in Sources */,
+				EFE6723A188DC55C00ACB3E6 /* CFMagicEvents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

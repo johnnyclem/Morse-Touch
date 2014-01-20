@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CFMagicEvents.h"
 
 @interface MTReceiveViewController : UIViewController
+
+@property (nonatomic) CFMagicEvents *magicEvents;
 
 @end

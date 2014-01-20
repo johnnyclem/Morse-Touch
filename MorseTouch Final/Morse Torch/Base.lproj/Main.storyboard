@@ -124,11 +124,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="aW0-vJ-RDJ">
+                                <rect key="frame" x="18" y="314" width="284" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="updateBrightnessThreshold:" destination="Qbe-xE-Pra" eventType="valueChanged" id="0lE-xT-Swc"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.7450980544090271" green="0.91372555494308472" blue="0.82745105028152466" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="G0X-Hw-r5v"/>
                     <connections>
+                        <outlet property="brightnessSlider" destination="aW0-vJ-RDJ" id="J7i-nl-7Ww"/>
                         <outlet property="messageLabel" destination="2Kl-Wi-oli" id="VuC-U7-jBU"/>
                     </connections>
                 </viewController>
